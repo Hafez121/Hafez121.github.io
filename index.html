@@ -483,11 +483,12 @@
     font-size: 0.82rem;
   }
 
-  /* RESPONSIVE */
+  /* RESPONSIVE TABLET */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
-    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; text-align: center; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.82rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; text-align: center; min-height: auto; }
     .hero-image { display: none; }
     .hero-btns { justify-content: center; }
     .hero-stats { justify-content: center; }
@@ -495,6 +496,104 @@
     section { padding: 4rem 1.5rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr; }
+  }
+
+  /* RESPONSIVE MOBILE */
+  @media (max-width: 480px) {
+    nav { padding: 0.9rem 1rem; }
+    .nav-links { gap: 0.9rem; }
+    .nav-links a { font-size: 0.75rem; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 5.5rem 1.2rem 2.5rem;
+      text-align: center;
+      min-height: auto;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      order: -1;
+    }
+
+    .hero-photo {
+      width: 120px;
+      height: 120px;
+    }
+
+    .hero-content {
+      order: 1;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      padding: 0.35rem 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-desc {
+      font-size: 0.92rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-btns {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      text-align: center;
+      padding: 0.85rem 1.5rem;
+    }
+
+    .hero-stats {
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+
+    .stat-num { font-size: 1.4rem; }
+    .stat-label { font-size: 0.72rem; }
+
+    section { padding: 3rem 1rem; }
+
+    .section-title { font-size: 1.7rem; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+    .about-links {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .about-links a {
+      text-align: center;
+    }
+
+    .projects-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+
+    .contact-links {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .contact-link {
+      justify-content: center;
+    }
+
+    footer { padding: 1.5rem 1rem; }
   }
 </style>
 
