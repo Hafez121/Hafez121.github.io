@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab — Hafez Fandy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #111111;
+    --bg2: #1a1a1a;
+    --bg3: #1f1f1f;
+    --border: rgba(255,255,255,0.08);
+    --accent: #D85A30;
+    --accent2: #E8724A;
+    --text: #E8E6E0;
+    --muted: #888780;
+    --card: #161616;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(17,17,17,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--text); }
+
+  .nav-links a.active { color: var(--accent); }
+
+  /* PAGE HEADER */
+  .lab-header {
+    padding: 9rem 4rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .lab-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .lab-desc {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* PROJECTS GRID */
+  .lab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem 6rem;
+  }
+
+  /* PROJECT CARD */
+  .lab-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lab-card:hover {
+    border-color: rgba(216,90,48,0.3);
+    transform: translateY(-4px);
+  }
+
+  /* PROJECT IMAGE */
+  .lab-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* IMAGE PLACEHOLDER (when no image yet) */
+  .lab-card-img-placeholder {
+    width: 100%;
+    height: 220px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .lab-card-body {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  /* SKILLS / TAGS */
+  .lab-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .lab-card-tag {
+    padding: 0.25rem 0.65rem;
+    background: rgba(216,90,48,0.1);
+    border: 1px solid rgba(216,90,48,0.2);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+  }
+
+  /* TITLE */
+  .lab-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  /* DESCRIPTION */
+  .lab-card-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  /* LIVE LINK BUTTON */
+  .lab-card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid rgba(216,90,48,0.35);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    width: fit-content;
+  }
+
+  .lab-card-btn:hover {
+    background: rgba(216,90,48,0.1);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .lab-card-btn svg {
+    transition: transform 0.2s;
+  }
+
+  .lab-card-btn:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  /* RESPONSIVE TABLET */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.82rem; }
+    .lab-header { padding: 7rem 1.5rem 3rem; }
+    .lab-grid { padding: 0 1.5rem 4rem; grid-template-columns: 1fr; }
+  }
+
+  /* RESPONSIVE MOBILE */
+  @media (max-width: 480px) {
+    nav { padding: 0.9rem 1rem; }
+    .nav-links { display: none; }
+    .lab-header { padding: 6rem 1rem 2.5rem; }
+    .lab-grid { padding: 0 1rem 3rem; grid-template-columns: 1fr; gap: 1.2rem; }
+    footer { padding: 1.5rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">HF<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="lab.html" class="active">Lab</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="lab-header">
+  <div class="section-tag">Experiments & Mini Projects</div>
+  <h1 class="lab-title">The Lab</h1>
+  <p class="lab-desc">A collection of small but meaningful builds — each one focused on a specific idea, technique, or problem worth solving.</p>
+</div>
+
+<!-- PROJECTS GRID -->
+<div class="lab-grid">
+
+  <!-- ===================== PROJECT CARD =====================
+    HOW TO ADD A PROJECT:
+    1. Copy one full .lab-card block below
+    2. Replace the placeholder values:
+       - Image: swap .lab-card-img-placeholder with <img class="lab-card-img" src="your-image.jpg" alt="...">
+       - Tags: edit or add <span class="lab-card-tag"> items
+       - Title: edit .lab-card-title
+       - Description: edit .lab-card-desc
+       - Button: set href to your live link
+  ========================================================= -->
+
+  <!-- CARD 1 -->
+  <div class="lab-card">
+    <div class="lab-card-img-placeholder">Project Image</div>
+    <div class="lab-card-body">
+      <div class="lab-card-tags">
+        <span class="lab-card-tag">Skill One</span>
+        <span class="lab-card-tag">Skill Two</span>
+        <span class="lab-card-tag">Skill Three</span>
+      </div>
+      <div class="lab-card-title">Project Title Here</div>
+      <p class="lab-card-desc">A short description of what this project does, what problem it solves, and what makes it interesting or challenging.</p>
+      <a href="#" class="lab-card-btn" target="_blank">
+        Live Project
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M7 17L17 7M17 7H7M17 7v10"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="lab-card">
+    <div class="lab-card-img-placeholder">Project Image</div>
+    <div class="lab-card-body">
+      <div class="lab-card-tags">
+        <span class="lab-card-tag">Skill One</span>
+        <span class="lab-card-tag">Skill Two</span>
+        <span class="lab-card-tag">Skill Three</span>
+      </div>
+      <div class="lab-card-title">Project Title Here</div>
+      <p class="lab-card-desc">A short description of what this project does, what problem it solves, and what makes it interesting or challenging.</p>
+      <a href="#" class="lab-card-btn" target="_blank">
+        Live Project
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M7 17L17 7M17 7H7M17 7v10"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="lab-card">
+    <div class="lab-card-img-placeholder">Project Image</div>
+    <div class="lab-card-body">
+      <div class="lab-card-tags">
+        <span class="lab-card-tag">Skill One</span>
+        <span class="lab-card-tag">Skill Two</span>
+        <span class="lab-card-tag">Skill Three</span>
+      </div>
+      <div class="lab-card-title">Project Title Here</div>
+      <p class="lab-card-desc">A short description of what this project does, what problem it solves, and what makes it interesting or challenging.</p>
+      <a href="#" class="lab-card-btn" target="_blank">
+        Live Project
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M7 17L17 7M17 7H7M17 7v10"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Hafez Fandy — WordPress & Front-End Developer</p>
+</footer>
+
+</body>
+</html>
