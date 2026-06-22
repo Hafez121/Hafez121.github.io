@@ -226,7 +226,7 @@
   if(!slug){
     container.innerHTML='<p style="color:var(--muted);font-style:italic;">No article specified.</p><br><a href="blog.html" class="back-bottom">&larr; Back to Journal</a>';
   } else {
-    fetch('posts/'+slug+'.md')
+    fetch('posts/'+slug+'.txt')
       .then(function(r){if(!r.ok)throw new Error('not found');return r.text();})
       .then(function(raw){
         var meta=parseFrontmatter(raw);
