@@ -488,6 +488,7 @@
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.2rem; }
     .nav-links a { font-size: 0.82rem; }
+    .hamburger { display: none; }
     .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; text-align: center; min-height: auto; }
     .hero-image { display: none; }
     .hero-btns { justify-content: center; }
@@ -499,9 +500,10 @@
   }
 
   /* RESPONSIVE MOBILE */
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     nav { padding: 0.9rem 1rem; }
-    .nav-links { display:none; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
 
     .hero {
       grid-template-columns: 1fr;
@@ -557,10 +559,18 @@
     }
 
     .hero-stats {
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       gap: 1.5rem;
       margin-top: 2rem;
       padding-top: 1.5rem;
+    }
+
+    .hero-stats > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .stat-num { font-size: 1.4rem; }
@@ -595,6 +605,159 @@
 
     footer { padding: 1.5rem 1rem; }
   }
+
+  /* HAMBURGER BUTTON */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 300;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE NAV OVERLAY */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #111111;
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.8rem;
+  }
+  .nav-overlay.open { display: flex; }
+  .nav-overlay a {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+  }
+  .nav-overlay a:hover,
+  .nav-overlay a.active { color: var(--accent); }
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 300;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #111111;
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.8rem;
+  }
+  .nav-overlay.open { display: flex; }
+  .nav-overlay a {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-overlay a:hover { color: var(--accent); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 300;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #111111;
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.8rem;
+  }
+  .nav-overlay.open { display: flex; }
+  .nav-overlay a {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-overlay a:hover,
+  .nav-overlay a.active { color: var(--accent); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
 </style>
 
 <style>
@@ -618,6 +781,7 @@ function goTo(btn, idx) {
 <body>
 
 <!-- NAV -->
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">HF<span>.</span></a>
   <ul class="nav-links">
@@ -628,7 +792,38 @@ function goTo(btn, idx) {
     <li><a href="blog.html">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-overlay" id="navOverlay">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="lab.html">Lab</a>
+  <a href="blog.html">Blog</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="nav-overlay" id="navOverlay">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="lab.html">Lab</a>
+  <a href="blog.html">Blog</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-overlay" id="navOverlay">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="lab.html">Lab</a>
+  <a href="blog.html">Blog</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -908,6 +1103,30 @@ function goTo(btn, idx) {
 <footer>
   <p>© 2026 Hafez Fandy — WordPress&Front-End Developer</p>
 </footer>
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('navOverlay').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('navOverlay').classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('navOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
 
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('navOverlay').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('navOverlay').classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('navOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
 </body>
 </html>
