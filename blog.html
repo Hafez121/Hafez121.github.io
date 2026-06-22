@@ -135,6 +135,58 @@
     .list-article .a-img, .list-article .a-img-ph { width: 100%; }
     footer { padding: 1.5rem 1rem; }
   }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 300;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #111111;
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.8rem;
+  }
+  .nav-overlay.open { display: flex; }
+  .nav-overlay a {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-overlay a:hover,
+  .nav-overlay a.active { color: var(--accent); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
 </style>
 </head>
 <body>
@@ -142,6 +194,7 @@
 <nav>
   <a href="index.html" class="nav-logo">HF<span>.</span></a>
   <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#skills">Skills</a></li>
     <li><a href="index.html#projects">Projects</a></li>
@@ -149,7 +202,19 @@
     <li><a href="blog.html" class="active">Blog</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-overlay" id="navOverlay">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="index.html#about" onclick="closeMenu()">About</a>
+  <a href="index.html#skills" onclick="closeMenu()">Skills</a>
+  <a href="index.html#projects" onclick="closeMenu()">Projects</a>
+  <a href="lab.html">Lab</a>
+  <a href="blog.html" class="active">Blog</a>
+  <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+</div>
 
 <div class="masthead">
   <div class="masthead-eyebrow">Hafez Fandy</div>
@@ -160,7 +225,7 @@
 
 <div class="datebar">
   <span class="datebar-date" id="todayDate"></span>
-  <a href="admin.html" class="datebar-admin">Admin ↗</a>
+  
 </div>
 
 <div class="category-bar">
@@ -191,8 +256,19 @@
 <script>
   document.getElementById('todayDate').textContent = new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
-  function getArticles() {
-    try { return JSON.parse(localStorage.getItem('hf_articles')) || []; } catch(e) { return []; }
+  let allArticles = [];
+
+  async function loadArticles() {
+    try {
+      const res = await fetch('posts/posts.json');
+      if (!res.ok) throw new Error('Failed to load posts');
+      allArticles = await res.json();
+      const filtered = currentCat === 'all' ? allArticles : allArticles.filter(a => a.category === currentCat);
+      render(filtered, currentCat === 'all');
+    } catch(e) {
+      console.error(e);
+      render([], true);
+    }
   }
 
   function imgEl(img, alt, cls) {
@@ -205,7 +281,7 @@
     return `<span class="a-read" onclick="go('${id}')">Read More →</span>`;
   }
 
-  function go(id) { window.location.href = 'article.html?id=' + id; }
+  function go(slug) { window.location.href = 'article.html?slug=' + slug; }
 
   function featuredCard(a) {
     return `<div class="featured-article">
@@ -214,7 +290,7 @@
       <div class="a-title-lg">${a.title}</div>
       <div class="a-meta">${a.date}</div>
       <p class="a-desc">${a.description}</p>
-      ${readBtn(a.id)}
+      ${readBtn(a.slug)}
     </div>`;
   }
 
@@ -225,7 +301,7 @@
       <div class="a-title-sm">${a.title}</div>
       <div class="a-meta">${a.date}</div>
       <p class="a-desc-sm">${a.description}</p>
-      ${readBtn(a.id)}
+      ${readBtn(a.slug)}
     </div>`;
   }
 
@@ -236,7 +312,7 @@
       <div class="a-title-md">${a.title}</div>
       <div class="a-meta">${a.date}</div>
       <p class="a-desc">${a.description}</p>
-      ${readBtn(a.id)}
+      ${readBtn(a.slug)}
     </div>`;
   }
 
@@ -248,7 +324,7 @@
         <div class="a-title-md">${a.title}</div>
         <div class="a-meta">${a.date}</div>
         <p class="a-desc">${a.description}</p>
-        ${readBtn(a.id)}
+        ${readBtn(a.slug)}
       </div>
     </div>`;
   }
@@ -305,13 +381,24 @@
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentCat = btn.dataset.cat;
-      const all = getArticles();
-      const filtered = currentCat === 'all' ? all : all.filter(a => a.category === currentCat);
+      const filtered = currentCat === 'all' ? allArticles : allArticles.filter(a => a.category === currentCat);
       render(filtered, currentCat === 'all');
     });
   });
 
-  render(getArticles(), true);
+  loadArticles();
+</script>
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('navOverlay').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('navOverlay').classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('navOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
 </script>
 </body>
 </html>
