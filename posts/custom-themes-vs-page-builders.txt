@@ -1,0 +1,61 @@
+---
+title: Custom WordPress Themes vs Page Builders — My Honest Take
+date: June 26, 2026
+category: WordPress & Freelancing
+description: After building sites both ways, I have a clear opinion on when to use a custom theme and when a page builder is the right call. Here's my honest breakdown.
+image: 
+---
+
+## The Question Every WordPress Developer Faces
+
+When you start a new WordPress project, one of the first decisions you make is how you're going to build it. Custom theme from scratch, or a page builder like Elementor?
+
+I've built projects both ways. And I've learned that the real answer isn't about which one is better — it's about which one is right for the specific project in front of you.
+
+## What Page Builders Are Actually Good At
+
+Let me be honest: page builders solve real problems. They let clients make changes themselves without breaking everything. They ship faster for certain types of sites. They lower the technical barrier for people who need a decent website without a long development timeline.
+
+For small business sites, landing pages, and blogs where the design isn't particularly complex, Elementor or a similar builder can be a completely legitimate choice.
+
+I've used Elementor on real client projects. It works. For the right client and the right project, it's the correct tool.
+
+## Where Page Builders Fall Short
+
+But page builders carry costs that aren't obvious until you're deep into a project.
+
+**Performance.** A page built with Elementor loads significantly more CSS and JavaScript than it needs to. You can mitigate this with caching and optimization plugins, but you're always fighting against the overhead the builder adds.
+
+**Code quality.** If you ever look at the HTML output of a page builder, it's not pretty. Layers of nested divs, inline styles, proprietary markup. This matters for accessibility and for SEO.
+
+**Lock-in.** If you build an entire site in Elementor and then decide to switch away from it, you lose everything. Your content is tied to the builder's shortcodes and structure.
+
+**Real limitations.** When a client asks for something the builder doesn't support out of the box, you find yourself fighting the tool instead of solving the problem.
+
+## What Custom Themes Give You
+
+A custom WordPress theme is code you wrote and understand completely. There's no abstraction layer between your intention and the output.
+
+Performance is as good as your code. The HTML is clean and semantic. You can implement anything you can think of. And when something breaks, you know exactly where to look.
+
+The trade-off is time. A custom theme takes longer to build than dragging and dropping elements in a visual editor. That time cost is real and has to be factored into project pricing and timelines.
+
+## My Actual Decision Framework
+
+Here's how I think about it for any new project:
+
+If the site needs complex custom functionality, unique interactions, or high performance standards — custom theme.
+
+If the client needs to manage and update content themselves with minimal technical knowledge — page builder or a hybrid approach with a well-configured block theme.
+
+If budget and timeline are severely constrained — page builder gets the job done.
+
+If it's a portfolio piece or something where code quality matters — custom theme every time.
+
+## The Skill That Matters Most
+
+Here's what I've realized: the developers who are most valuable aren't the ones who only know one approach. They're the ones who understand both deeply enough to make the right call for each situation.
+
+Knowing when not to build a custom theme is as important as knowing how to build one.
+
+That judgment — that's the real skill.
