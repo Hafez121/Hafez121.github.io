@@ -1,0 +1,69 @@
+---
+title: Why Every Developer Should Learn the Browser DevTools Properly
+date: June 26, 2026
+category: Tools & Resources
+description: Most developers use DevTools to check console errors and call it a day. But DevTools is one of the most powerful tools in your entire workflow — if you actually learn it.
+image: 
+---
+
+## The Tool You're Already Using Wrong
+
+Every web developer has DevTools open. But most are using maybe 20% of what it can actually do.
+
+I was the same way for a long time. F12 to open it, check if there are red errors in the console, close it. That's it.
+
+Then I started learning what was actually in there — and it genuinely changed how fast I can debug and build things.
+
+## The Inspector: More Than Just Viewing HTML
+
+Most developers know you can inspect elements and see the HTML structure. What fewer people use is the ability to edit that HTML and CSS live in the browser.
+
+When I'm building a layout, I do almost all my initial CSS experimentation directly in DevTools. I change values, see the result instantly, then copy what works into my actual code. This is dramatically faster than switching between editor and browser constantly.
+
+The computed styles panel is also underused. When a CSS rule isn't doing what you expect, the computed panel shows you exactly what value is actually being applied and where it came from — including which rule is overriding which.
+
+## The Console: Not Just for Error Messages
+
+Yes, the console shows errors. But it's also a live JavaScript environment.
+
+You can run any JavaScript directly in the console against the current page. This means you can test a function before writing it into your code, query the DOM to check if your selectors are correct, or inspect the value of any variable during debugging.
+
+I use the console to test fetch requests before wiring them up properly. Something like:
+
+```
+fetch('posts/posts.json').then(r=>r.json()).then(d=>console.log(d))
+```
+
+This tells me immediately whether the file exists, what the response looks like, and whether my JSON is valid — before I've written a single line of application code.
+
+## The Network Tab: Understanding What's Actually Loading
+
+The Network tab shows you every request your page makes — HTML, CSS, JavaScript, images, API calls, everything.
+
+This is essential for two things: debugging fetch requests that aren't working, and understanding your page's performance.
+
+When an API call fails, the Network tab tells you the status code, the exact URL that was requested, the response headers, and the response body. This is almost always enough information to fix the problem without guessing.
+
+For performance, the Network tab shows you what's loading slowly. Large images, blocking scripts, too many requests — all visible at a glance.
+
+## The Device Toolbar: Real Responsive Testing
+
+The device toolbar (the phone/tablet icon at the top of DevTools) lets you simulate different screen sizes and devices.
+
+But beyond just resizing the viewport, it also simulates touch events and lets you throttle the network speed to simulate a slow mobile connection. Testing your site on a simulated 3G connection often reveals performance problems that are invisible on a fast desktop connection.
+
+## Performance and Accessibility Tabs
+
+Two tabs most developers rarely open:
+
+The **Performance** tab records exactly what your browser is doing over time — rendering, scripting, painting. When something feels slow, this is where you find out why.
+
+The **Accessibility** tab shows you the accessibility tree of your page — how screen readers interpret your content. For any developer who cares about building sites that work for everyone, this is worth understanding.
+
+## Start With One Tab
+
+If you want to get better at DevTools, don't try to learn everything at once. Pick one tab and really learn it this week.
+
+My recommendation: start with the Network tab. Understanding network requests will immediately make you better at debugging and at thinking about performance.
+
+The developers who are fastest at solving problems aren't the ones who know the most code. They're the ones who are best at figuring out what's actually happening. DevTools is how you do that.
