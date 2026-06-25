@@ -1,0 +1,47 @@
+---
+title: How I'm Teaching Myself Web Development While Building Real Projects
+date: June 26, 2026
+category: Career & Learning
+description: Learning web development without a CS degree is hard. Here's the honest approach I took — skipping the theory rabbit holes and building real things from day one.
+image: 
+---
+
+## The Problem With Most Learning Advice
+
+Every article about learning web development tells you the same thing: start with HTML, then CSS, then JavaScript, then pick a framework. Follow the roadmap. Watch the tutorials. Take the course.
+
+I did all of that. And for a long time, I felt like I was learning without actually knowing anything.
+
+The turning point was when I stopped consuming and started building. Not toy projects. Not tutorial follow-alongs. Real things — websites with real problems to solve.
+
+## What My Learning Actually Looks Like
+
+I'm currently taking a JavaScript course on LinkedIn Learning. But here's what I do differently: I don't finish a module and move on. I stop, open my code editor, and try to use what I just learned in something real.
+
+If I learn about fetch(), I go build something that fetches data. If I learn about DOM manipulation, I go add an interactive element to one of my projects. The concept only sticks when I've fought with it in a real context.
+
+This is slower than binge-watching tutorials. But the knowledge stays.
+
+## Building Projects Before You Feel Ready
+
+My portfolio site — the one you're reading this on — was built while I was still learning. The blog system you're reading this through uses the Fetch API and a custom markdown renderer I wrote myself. Six months ago I wouldn't have known where to start.
+
+The secret is that I built it anyway. I got stuck constantly. I debugged for hours. I read documentation I barely understood. But every one of those struggles taught me something a tutorial never could.
+
+If you wait until you feel ready, you'll wait forever.
+
+## The Honest Struggle
+
+Some days I open my editor and feel completely lost. I'll stare at a bug for two hours that turns out to be a missing semicolon. I'll build something that looks terrible on mobile and spend a full day fixing it.
+
+This is normal. This is the job.
+
+What keeps me going is the progress I can see. Real URLs I can share. Real problems I've solved. A portfolio that gets better every week.
+
+## What I'd Tell Someone Starting Today
+
+Don't chase the perfect learning path. Pick one resource, follow it consistently, and build something with every concept you learn. Document what you make. Push everything to GitHub.
+
+The best developers I've seen online didn't have perfect starts. They just kept building.
+
+So that's what I'm doing.
