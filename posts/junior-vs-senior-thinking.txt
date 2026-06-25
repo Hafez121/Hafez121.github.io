@@ -1,0 +1,63 @@
+---
+title: The Difference Between Junior and Senior Developer Thinking
+date: June 26, 2026
+category: Career & Learning
+description: It's not about years of experience or how many frameworks you know. The gap between junior and senior thinking is about something more fundamental — and you can start closing it today.
+image: 
+---
+
+## What I Used to Think Seniority Meant
+
+When I started learning web development, I thought senior developers were just people who knew more things. More languages, more frameworks, more tricks. Seniority was a knowledge quantity problem.
+
+The more I've learned, the more I've realized how wrong that is.
+
+The difference between junior and senior thinking isn't about volume of knowledge. It's about how you approach problems — and that's something you can start developing right now, regardless of where you are in your learning.
+
+## Junior Thinking: Solving the Immediate Problem
+
+A junior developer gets a task and asks: how do I make this work?
+
+That's not a bad question. It's the right first question. But it's also where the thinking stops.
+
+The code gets written. The feature works. Done.
+
+What doesn't get asked: Will this still work when the data changes? What happens when this breaks at 2am? Will the next person who reads this understand what I was trying to do? Is this solving the right problem, or just the stated problem?
+
+## Senior Thinking: Solving the Right Problem
+
+A senior developer gets the same task and asks: what problem are we actually solving here?
+
+Sometimes the stated problem and the real problem are different. A client says "I need a popup on the homepage." A senior developer asks why — and discovers they actually need more email signups, and there are three better ways to achieve that than a popup.
+
+Senior thinking includes the ability to push back on a brief when the brief is wrong.
+
+## How Code Gets Written Differently
+
+Junior developers tend to write code that works for the case in front of them.
+
+Senior developers write code that works for the cases they haven't seen yet.
+
+This shows up in things like: not hardcoding values that might change, writing functions that do one thing instead of one massive function that does everything, naming variables in ways that make the code explain itself.
+
+It's not about clever code. Senior code is often simpler than junior code. The complexity gets moved into the thinking before the code is written, not into the code itself.
+
+## The Debugging Difference
+
+When something breaks, a junior developer often feels panic and then starts changing things randomly until it works.
+
+A senior developer feels calm, forms a hypothesis about what might be wrong, and tests that hypothesis systematically. They know that a bug is just a gap between what you expected to happen and what actually happened — and closing that gap is just a matter of finding where the expectation was wrong.
+
+The calm comes from experience. But the systematic approach can be learned and practiced right now.
+
+## What This Means for Me Right Now
+
+I'm not a senior developer. I know that clearly.
+
+But I've started trying to ask better questions before I write code. What's the actual goal here? What could go wrong? How would I explain this to someone else?
+
+These questions slow me down slightly at the start. They speed me up significantly by the end — because I'm not rewriting things I built wrong the first time.
+
+The gap between junior and senior isn't closed by learning more things. It's closed by thinking more carefully about the things you already know.
+
+That's work you can start today.
