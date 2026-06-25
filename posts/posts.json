@@ -1,11 +1,35 @@
 [
   {
+    "slug": "custom-themes-vs-page-builders",
+    "title": "Custom WordPress Themes vs Page Builders — My Honest Take",
+    "category": "WordPress & Freelancing",
+    "date": "June 26, 2026",
+    "description": "After building sites both ways, I have a clear opinion on when to use a custom theme and when a page builder is the right call. Here's my honest breakdown.",
+    "image": ""
+  },
+  {
+    "slug": "junior-vs-senior-thinking",
+    "title": "The Difference Between Junior and Senior Developer Thinking",
+    "category": "Career & Learning",
+    "date": "June 26, 2026",
+    "description": "It's not about years of experience or how many frameworks you know. The gap between junior and senior thinking is about something more fundamental — and you can start closing it today.",
+    "image": ""
+  },
+  {
+    "slug": "browser-devtools",
+    "title": "Why Every Developer Should Learn the Browser DevTools Properly",
+    "category": "Tools & Resources",
+    "date": "June 26, 2026",
+    "description": "Most developers use DevTools to check console errors and call it a day. But DevTools is one of the most powerful tools in your entire workflow — if you actually learn it.",
+    "image": ""
+  },
+  {
     "slug": "teaching-myself-web-dev",
     "title": "How I'm Teaching Myself Web Development While Building Real Projects",
     "category": "Career & Learning",
     "date": "June 26, 2026",
     "description": "Learning web development without a CS degree is hard. Here's the honest approach I took — skipping the theory rabbit holes and building real things from day one.",
-    "image": "images/Learning.jpg"
+    "image": ""
   },
   {
     "slug": "my-developer-workflow",
@@ -13,7 +37,7 @@
     "category": "Tools & Resources",
     "date": "June 26, 2026",
     "description": "After a lot of trial and error, I've settled on a set of tools that make my development work faster and less painful. Here's exactly what I use and why.",
-    "image": "images/Developer-Workflow.jpg"
+    "image": ""
   },
   {
     "slug": "git-for-beginners",
@@ -21,6 +45,6 @@
     "category": "Tools & Resources",
     "date": "June 26, 2026",
     "description": "Git confused me for a long time. Then one day it clicked. Here's the explanation I wish I had when I was starting out — no jargon, just what Git actually does and why it matters.",
-    "image": "images/Git.png"
+    "image": ""
   }
 ]
