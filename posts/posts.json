@@ -1,10 +1,26 @@
 [
   {
-    "slug": "hello-world",
-    "title": "Hello World — My First Article",
-    "category": "wordpress",
-    "date": "June 21, 2026",
-    "description": "This is my first article on the blog. A quick introduction to what I plan to write about — WordPress, frontend development, and everything in between.",
+    "slug": "teaching-myself-web-dev",
+    "title": "How I'm Teaching Myself Web Development While Building Real Projects",
+    "category": "Career & Learning",
+    "date": "June 26, 2026",
+    "description": "Learning web development without a CS degree is hard. Here's the honest approach I took — skipping the theory rabbit holes and building real things from day one.",
+    "image": ""
+  },
+  {
+    "slug": "my-developer-workflow",
+    "title": "My Developer Workflow: The Tools I Use Every Day",
+    "category": "Tools & Resources",
+    "date": "June 26, 2026",
+    "description": "After a lot of trial and error, I've settled on a set of tools that make my development work faster and less painful. Here's exactly what I use and why.",
+    "image": ""
+  },
+  {
+    "slug": "git-for-beginners",
+    "title": "Git for Beginners — How I Finally Understood Version Control",
+    "category": "Tools & Resources",
+    "date": "June 26, 2026",
+    "description": "Git confused me for a long time. Then one day it clicked. Here's the explanation I wish I had when I was starting out — no jargon, just what Git actually does and why it matters.",
     "image": ""
   }
 ]
