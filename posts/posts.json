@@ -13,7 +13,7 @@
     "category": "Career & Learning",
     "date": "June 26, 2026",
     "description": "It's not about years of experience or how many frameworks you know. The gap between junior and senior thinking is about something more fundamental — and you can start closing it today.",
-    "image": ""
+    "image": "images/Junior-vs-senior.png"
   },
   {
     "slug": "browser-devtools",
@@ -21,7 +21,7 @@
     "category": "Tools & Resources",
     "date": "June 26, 2026",
     "description": "Most developers use DevTools to check console errors and call it a day. But DevTools is one of the most powerful tools in your entire workflow — if you actually learn it.",
-    "image": ""
+    "image": "images/Devtools.png"
   },
   {
     "slug": "teaching-myself-web-dev",
