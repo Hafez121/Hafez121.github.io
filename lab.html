@@ -248,6 +248,42 @@
     transform: translate(2px, -2px);
   }
 
+  /* EMPTY STATE */
+  .lab-empty {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 4rem 8rem;
+    text-align: center;
+  }
+
+  .lab-empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    opacity: 0.8;
+  }
+
+  .lab-empty-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em;
+  }
+
+  .lab-empty-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  @media (max-width: 480px) {
+    .lab-empty { padding: 1.5rem 1rem 5rem; }
+  }
+
   /* FOOTER */
   footer {
     padding: 2rem 4rem;
@@ -363,8 +399,15 @@
   <p class="lab-desc">A collection of small but meaningful builds — each one focused on a specific idea, technique, or problem worth solving.</p>
 </div>
 
-<!-- PROJECTS GRID -->
-<div class="lab-grid">
+<!-- EMPTY STATE (shown while Lab has no published projects yet) -->
+<div class="lab-empty">
+  <div class="lab-empty-icon">🛠️</div>
+  <div class="lab-empty-title">Nothing to show yet</div>
+  <p class="lab-empty-desc">I'm currently building out mini projects for this page — API tools, WordPress utilities, and more. Check back soon.</p>
+</div>
+
+<!-- PROJECTS GRID (hidden until real projects are ready — delete style="display:none" below to bring it back) -->
+<div class="lab-grid" style="display:none">
 
   <!-- ===================== PROJECT CARD =====================
     HOW TO ADD A PROJECT:
