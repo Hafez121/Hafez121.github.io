@@ -166,7 +166,7 @@
 
   .btn-primary {
     padding: 0.85rem 2rem;
-    background: var(--accent);
+    background: #C24E28;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -443,7 +443,7 @@
     gap: 0.4rem;
     margin-top: 1.2rem;
     padding: 0.55rem 1.1rem;
-    background: var(--accent);
+    background: #C24E28;
     color: #fff;
     border-radius: 100px;
     font-size: 0.82rem;
@@ -795,7 +795,10 @@
 function goTo(btn, idx) {
   const gallery = btn.closest('.gallery');
   gallery.querySelectorAll('.slide').forEach((s,i) => s.classList.toggle('active', i===idx));
-  gallery.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+  gallery.querySelectorAll('.dot').forEach((d,i) => {
+    d.classList.toggle('active', i===idx);
+    d.setAttribute('aria-pressed', i===idx);
+  });
 }
 </script>
 </head>
@@ -1020,7 +1023,7 @@ function goTo(btn, idx) {
         <div class="slide ">
           <img src="images/projects/shopping-cart-checkout.webp" alt="Shopping Cart & Checkout" class="gallery-img" loading="lazy">
           <div class="slide-caption">Shopping Cart & Checkout</div>
-        </div><div class="gallery-nav"><button class="dot active" onclick="goTo(this,0)"></button><button class="dot " onclick="goTo(this,1)"></button><button class="dot " onclick="goTo(this,2)"></button><button class="dot " onclick="goTo(this,3)"></button><button class="dot " onclick="goTo(this,4)"></button><button class="dot " onclick="goTo(this,5)"></button></div></div><p class="project-desc">Full fashion e-commerce store with product listings, brand filtering (Versace, Gucci, Prada, Zara), single product pages, WooCommerce cart and checkout, and customer reviews.</p>
+        </div><div class="gallery-nav"><button class="dot active" onclick="goTo(this,0)" aria-label="Show slide 1: New Arrivals Section"></button><button class="dot " onclick="goTo(this,1)" aria-label="Show slide 2: Collections Page"></button><button class="dot " onclick="goTo(this,2)" aria-label="Show slide 3: Shop by Brand"></button><button class="dot " onclick="goTo(this,3)" aria-label="Show slide 4: Product Listings"></button><button class="dot " onclick="goTo(this,4)" aria-label="Show slide 5: Single Product Page"></button><button class="dot " onclick="goTo(this,5)" aria-label="Show slide 6: Shopping Cart & Checkout"></button></div></div><p class="project-desc">Full fashion e-commerce store with product listings, brand filtering (Versace, Gucci, Prada, Zara), single product pages, WooCommerce cart and checkout, and customer reviews.</p>
       </div>
     </div>
 
@@ -1057,7 +1060,7 @@ function goTo(btn, idx) {
         <div class="slide ">
           <img src="images/projects/contact-page.webp" alt="Contact Page" class="gallery-img" loading="lazy">
           <div class="slide-caption">Contact Page</div>
-        </div><div class="gallery-nav"><button class="dot active" onclick="goTo(this,0)"></button><button class="dot " onclick="goTo(this,1)"></button><button class="dot " onclick="goTo(this,2)"></button></div></div><p class="project-desc">Clean minimal tech blog with categorized navigation across News, Reviews, Gaming, Software, and Consulting. Designed for readability with a modern layout optimized for content-heavy publishing.</p>
+        </div><div class="gallery-nav"><button class="dot active" onclick="goTo(this,0)" aria-label="Show slide 1: Newsletter & Categories"></button><button class="dot " onclick="goTo(this,1)" aria-label="Show slide 2: Software Category Page"></button><button class="dot " onclick="goTo(this,2)" aria-label="Show slide 3: Contact Page"></button></div></div><p class="project-desc">Clean minimal tech blog with categorized navigation across News, Reviews, Gaming, Software, and Consulting. Designed for readability with a modern layout optimized for content-heavy publishing.</p>
       </div>
     </div>
 
