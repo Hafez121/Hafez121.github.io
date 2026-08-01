@@ -11,15 +11,15 @@
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
-    --bg: #111111;
-    --bg2: #1a1a1a;
-    --bg3: #1f1f1f;
-    --border: rgba(255,255,255,0.08);
-    --accent: #D85A30;
-    --accent2: #E8724A;
-    --text: #E8E6E0;
-    --muted: #888780;
-    --card: #161616;
+    --bg: #0a0a0a;
+    --bg2: #161616;
+    --bg3: #1c1c1c;
+    --border: rgba(255,255,255,0.12);
+    --accent: #ffffff;
+    --accent2: #cfcfcf;
+    --text: #f5f5f3;
+    --muted: #8a8a8a;
+    --card: #131313;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,27 +47,22 @@
   /* NAV */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(17,17,17,0.88);
+    width: max-content;
+    max-width: calc(100% - 2rem);
+    padding: 0.9rem 2.2rem;
+    background: rgba(255,255,255,0.06);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px;
   }
-
-  .nav-logo {
-    font-family: 'Sora', sans-serif;
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-logo span { color: var(--accent); }
 
   .nav-links {
     display: flex;
@@ -76,98 +71,77 @@
   }
 
   .nav-links a {
+    position: relative;
+    display: inline-block;
     color: var(--muted);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 400;
     transition: color 0.2s;
     letter-spacing: 0.02em;
+    padding-bottom: 4px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--text);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
   }
 
   .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
 
   /* HERO */
   .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 8rem 4rem 4rem;
     position: relative;
+    min-height: 100vh;
     overflow: hidden;
   }
 
-  .hero::after {
-    content: '';
+  .hero-photo {
     position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(216,90,48,0.12) 0%, transparent 70%);
-    pointer-events: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    z-index: 0;
   }
 
-  .hero-content { position: relative; z-index: 2; }
-
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 1rem;
-    border: 1px solid rgba(216,90,48,0.3);
-    border-radius: 100px;
-    font-size: 0.8rem;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    background: rgba(216,90,48,0.05);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
   }
 
-  .hero-tag::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
+  .hero-tagline {
+    position: absolute;
+    z-index: 2;
+    left: 4rem;
+    bottom: 32%;
+    max-width: 440px;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 600;
+    line-height: 1.45;
+    color: #fff;
+    margin: 0;
   }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  .hero h1 {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-  }
-
-  .hero h1 .line-accent { color: var(--accent); }
-  .hero h1 .line-dim { color: var(--muted); }
-
-  .hero-desc {
-    font-size: 1.05rem;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 480px;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-
-  .hero-btns {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  /* SECTION COMMONS */
+  section { padding: 6rem 4rem; }
 
   .btn-primary {
     padding: 0.85rem 2rem;
-    background: #C24E28;
-    color: #fff;
+    background: #ffffff;
+    color: #0a0a0a;
     border: none;
     border-radius: 8px;
     font-family: 'DM Sans', sans-serif;
@@ -180,9 +154,9 @@
   }
 
   .btn-primary:hover {
-    background: #C04E28;
+    background: #e0e0e0;
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(216,90,48,0.35);
+    box-shadow: 0 8px 30px rgba(255,255,255,0.15);
   }
 
   .btn-secondary {
@@ -204,58 +178,6 @@
     border-color: rgba(255,255,255,0.2);
     background: rgba(255,255,255,0.04);
   }
-
-  .hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
-  .hero-image::before {
-    content: '';
-    position: absolute;
-    width: 340px; height: 340px;
-    background: radial-gradient(circle, rgba(216,90,48,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .hero-photo {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: top;
-    border: 2px solid rgba(216,90,48,0.3);
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 0 60px rgba(216,90,48,0.2);
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 2.5rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .stat-num {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--text);
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-top: 0.2rem;
-    letter-spacing: 0.03em;
-  }
-
-  /* SECTION COMMONS */
-  section { padding: 6rem 4rem; }
 
   .section-tag {
     font-size: 0.75rem;
@@ -286,33 +208,64 @@
   /* ABOUT */
   #about {
     background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
   }
 
-  .about-grid {
+  .about-hook {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text);
+    max-width: 780px;
+    margin: 1.5rem 0 3rem;
+  }
+
+  .about-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
     max-width: 1100px;
-    margin: 0 auto;
   }
 
-  .about-text p {
+  .about-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.8rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .about-card:hover {
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-3px);
+  }
+
+  .about-card svg {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .about-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+
+  .about-card p {
     color: var(--muted);
-    line-height: 1.8;
-    font-size: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
     font-weight: 300;
-    margin-bottom: 1.2rem;
   }
-
-  .about-text p strong { color: var(--text); font-weight: 500; }
 
   .about-links {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
   }
 
   /* SKILLS */
@@ -335,7 +288,7 @@
   }
 
   .skill-card:hover {
-    border-color: rgba(216,90,48,0.3);
+    border-color: rgba(255,255,255,0.25);
     transform: translateY(-3px);
   }
 
@@ -364,6 +317,101 @@
     color: var(--muted);
   }
 
+  /* SKILLS MARQUEE */
+  .skills-marquee {
+    position: relative;
+    overflow: hidden;
+    padding: 1.6rem 0;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: marquee-scroll 26s linear infinite;
+  }
+
+  .skills-marquee:hover .marquee-track { animation-play-state: paused; }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-pill {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.7rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--muted);
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .marquee-pill:hover {
+    color: var(--text);
+    border-color: rgba(255,255,255,0.35);
+  }
+
+  .skills-toggle-wrap {
+    text-align: center;
+    margin-top: 2.2rem;
+  }
+
+  .skills-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s, background 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .skills-toggle-btn:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  .skills-toggle-btn svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .skills-toggle-btn.open svg { transform: rotate(180deg); }
+
+  .skills-full {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
+  }
+
+  .skills-full.open {
+    max-height: 1200px;
+    opacity: 1;
+    margin-top: 2.5rem;
+  }
+
   /* PROJECTS */
   #projects { background: var(--bg); }
 
@@ -389,7 +437,7 @@
   }
 
   .project-card:hover {
-    border-color: rgba(216,90,48,0.3);
+    border-color: rgba(255,255,255,0.25);
     transform: translateY(-4px);
   }
 
@@ -413,8 +461,8 @@
 
   .project-tag {
     padding: 0.25rem 0.65rem;
-    background: rgba(216,90,48,0.1);
-    border: 1px solid rgba(216,90,48,0.2);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 100px;
     font-size: 0.72rem;
     color: var(--accent);
@@ -443,8 +491,8 @@
     gap: 0.4rem;
     margin-top: 1.2rem;
     padding: 0.55rem 1.1rem;
-    background: #C24E28;
-    color: #fff;
+    background: #ffffff;
+    color: #0a0a0a;
     border-radius: 100px;
     font-size: 0.82rem;
     font-weight: 600;
@@ -460,7 +508,6 @@
   /* CONTACT */
   #contact {
     background: var(--bg2);
-    border-top: 1px solid var(--border);
     text-align: center;
   }
 
@@ -492,19 +539,38 @@
   }
 
   .contact-link:hover {
-    border-color: rgba(216,90,48,0.4);
-    background: rgba(216,90,48,0.08);
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.05);
     transform: translateY(-2px);
   }
 
   /* FOOTER */
   footer {
     padding: 2rem 4rem;
-    border-top: 1px solid var(--border);
     text-align: center;
     color: var(--muted);
     font-size: 0.82rem;
   }
+
+  .footer-resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.9rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.82rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .footer-resume:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.5);
+  }
+
+  .footer-resume svg { width: 14px; height: 14px; }
 
   /* RESPONSIVE TABLET */
   @media (max-width: 900px) {
@@ -512,11 +578,8 @@
     .nav-links { gap: 1.2rem; }
     .nav-links a { font-size: 0.82rem; }
     .hamburger { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; text-align: center; min-height: auto; }
-    .hero-image { display: none; }
-    .hero-btns { justify-content: center; }
-    .hero-stats { justify-content: center; }
-    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-tagline { left: 2rem; bottom: 30%; max-width: 380px; }
+    .about-cards { grid-template-columns: 1fr; }
     section { padding: 4rem 1.5rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr; }
@@ -528,82 +591,22 @@
     .nav-links { display: none; }
     .hamburger { display: flex; }
 
-    .hero {
-      grid-template-columns: 1fr;
-      padding: 5.5rem 1.2rem 2.5rem;
-      text-align: center;
-      min-height: auto;
+    .hero-tagline {
+      left: 1.5rem;
+      right: 1.5rem;
+      bottom: 26%;
+      max-width: none;
+      font-size: 1rem;
     }
-
-    .hero-image {
-      display: none;
-    }
-
-    .hero-photo {
-      width: 120px;
-      height: 120px;
-    }
-
-    .hero-content {
-      order: 1;
-      width:100%;
-      overflow:hidden;
-    }
-
-    .hero h1 {
-      font-size: 1.75rem;
-      line-height: 1.1;
-      word-break: break-word;
-      margin-bottom: 1rem;
-    }
-
-    .hero-tag {
-      font-size: 0.7rem;
-      padding: 0.35rem 0.8rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero-desc {
-      font-size: 0.92rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .hero-btns {
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .btn-primary, .btn-secondary {
-      width: 100%;
-      text-align: center;
-      padding: 0.85rem 1.5rem;
-    }
-
-    .hero-stats {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-    }
-
-    .hero-stats > div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .stat-num { font-size: 1.4rem; }
-    .stat-label { font-size: 0.72rem; }
 
     section { padding: 3rem 1rem; }
 
     .section-title { font-size: 1.7rem; }
 
-    .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .about-cards { grid-template-columns: 1fr; gap: 1rem; }
+
+    .marquee-pill { font-size: 0.85rem; padding: 0.65rem 1.2rem; }
+    .skills-marquee { padding: 1.2rem 0; }
 
     .about-links {
       flex-direction: column;
@@ -661,7 +664,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: #111111;
+    background: #0a0a0a;
     z-index: 200;
     flex-direction: column;
     align-items: center;
@@ -708,7 +711,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: #111111;
+    background: #0a0a0a;
     z-index: 200;
     flex-direction: column;
     align-items: center;
@@ -759,7 +762,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: #111111;
+    background: #0a0a0a;
     z-index: 200;
     flex-direction: column;
     align-items: center;
@@ -786,10 +789,10 @@
 .slide { display: none; }
 .slide.active { display: block; }
 .gallery-img { width: 100%; height: 200px; object-fit: cover; object-position: top; border-radius: 8px; border: 1px solid rgba(255,255,255,0.07); }
-.slide-caption { font-size: 0.75rem; color: #888780; margin-top: 0.5rem; text-align: center; }
+.slide-caption { font-size: 0.75rem; color: #8a8a8a; margin-top: 0.5rem; text-align: center; }
 .gallery-nav { display: flex; justify-content: center; gap: 0.4rem; margin-top: 0.8rem; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; padding: 0; transition: background 0.2s; }
-.dot.active { background: #D85A30; }
+.dot.active { background: #ffffff; }
 </style>
 
 <style>
@@ -800,11 +803,11 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: var(--accent);
+    background: #25D366;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 30px rgba(216,90,48,0.35);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.35);
     z-index: 90;
     opacity: 0;
     transform: translateY(24px) scale(0.85);
@@ -817,7 +820,7 @@
     pointer-events: auto;
   }
   .whatsapp-float:hover {
-    background: var(--accent2);
+    background: #20BD5A;
     transform: translateY(-3px) scale(1.05);
   }
   .whatsapp-float svg { width: 28px; height: 28px; fill: #fff; }
@@ -842,7 +845,6 @@ function goTo(btn, idx) {
 <!-- NAV -->
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">HF<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -872,126 +874,125 @@ function goTo(btn, idx) {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-tag">WordPress • Frontend • Open to Work</div>
-    <h1>
-      WordPress &<br>
-      <span class="line-accent">Frontend</span><br>
-      <span class="line-dim">Developer</span>
-    </h1>
-    <p class="hero-desc">
-      I build fast, responsive, and user-focused websites using WordPress, WooCommerce, HTML, CSS, JavaScript, and PHP. From custom frontend interfaces to fully functional WordPress solutions, I help businesses establish a professional online presence.
-    </p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn-primary">View My Work</a>
-      <a href="#contact" class="btn-secondary">Get In Touch</a>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-num">3+</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
-      <div>
-        <div class="stat-num">WordPress</div>
-        <div class="stat-label">Custom & WooCommerce</div>
-      </div>
-      <div>
-        <div class="stat-num">Frontend</div>
-        <div class="stat-label">HTML • CSS • JavaScript</div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-image">
-    <img src="images/projects/hafez-fandy.webp" alt="Hafez Fandy" class="hero-photo" width="300" height="300" fetchpriority="high">
-  </div>
+  <img src="images/projects/hafez-fandy.webp" alt="Hafez Fandy" class="hero-photo" fetchpriority="high">
+  <div class="hero-scrim"></div>
+  <p class="hero-tagline">I build fast WordPress sites and clean front-end code that turn visitors into clients.</p>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about-grid">
-    <div>
-      <div class="section-tag">About Me</div>
-      <h2 class="section-title">Building the web, one site at a time</h2>
+  <div class="section-tag">About Me</div>
+  <h2 class="section-title">Building the web, one site at a time</h2>
+  <p class="about-hook">I'm Hafez — a WordPress and front-end developer who turns designs into fast, reliable websites businesses actually enjoy using.</p>
+
+  <div class="about-cards">
+    <div class="about-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg>
+      <h3>WordPress Development</h3>
+      <p>Custom themes, plugins, WooCommerce stores, and Elementor builds — tailored to how a business actually works, not squeezed into a template.</p>
     </div>
-    <div class="about-text">
-       <p>
-    <strong>I'm Hafez Fandy, a WordPress and Frontend Developer</strong> with 3+ years of web development experience and a strong focus on building modern, responsive, and user-friendly websites.
-  </p>
+    <div class="about-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 4L3 12l5 8M16 4l5 8-5 8"/></svg>
+      <h3>Frontend Engineering</h3>
+      <p>Clean, responsive interfaces in HTML, CSS, JavaScript, and React — built to load fast and hold up across every browser and device.</p>
+    </div>
+    <div class="about-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8z"/></svg>
+      <h3>Performance & Reliability</h3>
+      <p>I care about what doesn't show up in a screenshot: load speed, accessibility, and code that's easy to maintain long after launch.</p>
+    </div>
+    <div class="about-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-6-3.8-9s1.3-6.5 3.8-9z"/></svg>
+      <h3>Native Arabic & RTL</h3>
+      <p>Fluent in Arabic with real right-to-left build experience — a genuine edge for bilingual and MENA-facing projects.</p>
+    </div>
+  </div>
 
-  <p>
-    My expertise combines WordPress development and frontend engineering. I build everything from Elementor websites and WooCommerce stores to custom WordPress solutions, while also creating clean and responsive interfaces using HTML, CSS, JavaScript, and PHP.
-  </p>
-
-  <p>
-    I enjoy transforming designs into fast, accessible, and cross-browser compatible websites. Whether it's developing custom WordPress functionality, optimizing performance, or crafting engaging frontend experiences, my goal is to deliver websites that are both visually polished and technically reliable.
-  </p>
-
-  <p>
-    I'm continuously expanding my skills in modern web development while helping businesses establish a strong online presence through high-quality WordPress and frontend solutions.
-  </p>
   <div class="about-links">
-        <a href="#contact" class="btn-primary">Let's Work Together</a>
-        <a href="https://www.linkedin.com/in/hafez-fandy-a7666628a/" target="_blank" class="btn-secondary">LinkedIn</a>
-      </div>
-    </div>
+    <a href="#contact" class="btn-primary">Let's Work Together</a>
+    <a href="https://www.linkedin.com/in/hafez-fandy-a7666628a/" target="_blank" class="btn-secondary">LinkedIn</a>
   </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" style="background: var(--bg3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section id="skills" style="background: var(--bg3);">
   <div style="max-width:1100px; margin:0 auto;">
     <div class="section-tag">What I Work With</div>
     <h2 class="section-title">Technical Skills</h2>
-    <div class="skills-grid" style="margin-top:2.5rem;">
-      <div class="skill-card">
-        <div class="skill-card-title">WordPress & CMS</div>
-        <div class="skill-tags">
-          <span class="tag">WordPress</span>
-          <span class="tag">Elementor</span>
-          <span class="tag">WooCommerce</span>
-          <span class="tag">Custom Themes</span>
-          <span class="tag">Child Themes</span>
-          <span class="tag">ACF</span>
-          <span class="tag">WP_Query</span>
-          <span class="tag">Hooks & Filters</span>
-          <span class="tag">REST API</span>
+  </div>
+
+  <div class="skills-marquee">
+    <div class="marquee-track" id="skillsTrack">
+      <div class="marquee-pill">WordPress</div>
+      <div class="marquee-pill">Custom Code</div>
+      <div class="marquee-pill">Front-End Development</div>
+      <div class="marquee-pill">SEO</div>
+      <div class="marquee-pill">Performance Optimization</div>
+      <div class="marquee-pill">WooCommerce</div>
+      <div class="marquee-pill">Responsive Design</div>
+      <div class="marquee-pill">API Integration</div>
+      <div class="marquee-pill">RTL & Arabic Support</div>
+    </div>
+  </div>
+
+  <div class="skills-toggle-wrap">
+    <button class="skills-toggle-btn" id="skillsToggleBtn" onclick="toggleFullSkills()">
+      <span id="skillsToggleLabel">See Full Stack</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+
+    <div class="skills-full" id="skillsFull">
+      <div class="skills-grid" style="margin-top:0;">
+        <div class="skill-card">
+          <div class="skill-card-title">WordPress & CMS</div>
+          <div class="skill-tags">
+            <span class="tag">WordPress</span>
+            <span class="tag">Elementor</span>
+            <span class="tag">WooCommerce</span>
+            <span class="tag">Custom Themes</span>
+            <span class="tag">Child Themes</span>
+            <span class="tag">ACF</span>
+            <span class="tag">WP_Query</span>
+            <span class="tag">Hooks & Filters</span>
+            <span class="tag">REST API</span>
+          </div>
         </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title">Frontend</div>
-        <div class="skill-tags">
-          <span class="tag">HTML5</span>
-          <span class="tag">CSS3</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">React.js</span>
-          <span class="tag">Responsive Design</span>
-          <span class="tag">BEM</span>
-          <span class="tag">CSS Variables</span>
+        <div class="skill-card">
+          <div class="skill-card-title">Frontend</div>
+          <div class="skill-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">React.js</span>
+            <span class="tag">Responsive Design</span>
+            <span class="tag">BEM</span>
+            <span class="tag">CSS Variables</span>
+          </div>
         </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title">Backend & Languages</div>
-        <div class="skill-tags">
-          <span class="tag">PHP</span>
-          <span class="tag">Python</span>
-          <span class="tag">Django</span>
-          <span class="tag">Flask</span>
-          <span class="tag">C++</span>
-          <span class="tag">C</span>
+        <div class="skill-card">
+          <div class="skill-card-title">Backend & Languages</div>
+          <div class="skill-tags">
+            <span class="tag">PHP</span>
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">Flask</span>
+            <span class="tag">C++</span>
+            <span class="tag">C</span>
+          </div>
         </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title">Tools & Environment</div>
-        <div class="skill-tags">
-          <span class="tag">Git</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">Linux</span>
-          <span class="tag">Bash</span>
-          <span class="tag">Neovim</span>
-          <span class="tag">VS Code</span>
-          <span class="tag">Figma</span>
-          <span class="tag">WP-CLI</span>
-          <span class="tag">cPanel</span>
+        <div class="skill-card">
+          <div class="skill-card-title">Tools & Environment</div>
+          <div class="skill-tags">
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Bash</span>
+            <span class="tag">Neovim</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Figma</span>
+            <span class="tag">WP-CLI</span>
+            <span class="tag">cPanel</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1136,6 +1137,10 @@ function goTo(btn, idx) {
 
 <footer>
   <p>© 2026 Hafez Fandy — WordPress&Front-End Developer</p>
+  <a class="footer-resume" href="files/Hafez-Fandy-Resume.pdf" target="_blank" rel="noopener" download>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+    Download Resume (PDF)
+  </a>
 </footer>
 
 <a id="whatsappFloat" class="whatsapp-float" href="https://wa.me/96181520553" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
@@ -1152,6 +1157,22 @@ function goTo(btn, idx) {
     document.getElementById('hamburger').classList.remove('open');
     document.getElementById('navOverlay').classList.remove('open');
     document.body.style.overflow = '';
+  }
+</script>
+
+<script>
+  (function() {
+    var track = document.getElementById('skillsTrack');
+    if (track) track.innerHTML += track.innerHTML;
+  })();
+
+  function toggleFullSkills() {
+    var panel = document.getElementById('skillsFull');
+    var btn = document.getElementById('skillsToggleBtn');
+    var label = document.getElementById('skillsToggleLabel');
+    var open = panel.classList.toggle('open');
+    btn.classList.toggle('open');
+    label.textContent = open ? 'Hide Full Stack' : 'See Full Stack';
   }
 </script>
 
