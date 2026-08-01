@@ -126,7 +126,7 @@
     position: absolute;
     z-index: 2;
     left: 4rem;
-    bottom: 24%;
+    bottom: 16%;
     max-width: 460px;
   }
 
@@ -597,7 +597,7 @@
     .nav-links { gap: 1.2rem; }
     .nav-links a { font-size: 0.82rem; }
     .hamburger { display: none; }
-    .hero-info { left: 2rem; bottom: 26%; max-width: 380px; }
+    .hero-info { left: 2rem; bottom: 18%; max-width: 380px; }
     .about-cards { grid-template-columns: 1fr; }
     section { padding: 4rem 1.5rem; }
     .projects-grid { grid-template-columns: 1fr; }
@@ -613,7 +613,7 @@
     .hero-info {
       left: 1.5rem;
       right: 1.5rem;
-      bottom: 2rem;
+      bottom: 1.25rem;
       max-width: none;
     }
 
@@ -669,8 +669,8 @@
   .hamburger {
     display: none;
     position: fixed;
-    top: 1.3rem;
-    right: 1.3rem;
+    top: 1.5rem;
+    right: 1.5rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -798,10 +798,10 @@ function goTo(btn, idx) {
     <li><a href="blog.html">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
+<button class="hamburger" id="hamburger" aria-label="Toggle menu">
+  <span></span><span></span><span></span>
+</button>
 <div class="nav-overlay" id="navOverlay">
   <a href="#about" onclick="closeMenu()">About</a>
   <a href="#skills" onclick="closeMenu()">Skills</a>
