@@ -1,0 +1,64 @@
+---
+title: My Developer Workflow: The Tools I Use Every Day
+date: June 26, 2026
+category: Tools & Resources
+description: After a lot of trial and error, I've settled on a set of tools that make my development work faster and less painful. Here's exactly what I use and why.
+image: 
+---
+
+## Why Workflow Matters
+
+A bad workflow doesn't just slow you down — it drains your energy before you even start writing code. Searching for files, switching between too many apps, losing track of changes — these small frictions add up.
+
+After building several WordPress sites and my own portfolio from scratch, I've landed on a setup that actually works for me. Nothing fancy. Just tools that do their job and get out of the way.
+
+## Code Editor: VS Code
+
+VS Code is my main editor and I don't see that changing anytime soon. It's fast, has excellent extension support, and handles everything from HTML and CSS to PHP and JavaScript without breaking a sweat.
+
+The extensions I actually use daily:
+
+- **Prettier** — auto-formats my code on save so I don't have to think about indentation
+- **Live Server** — launches a local dev server with hot reload, essential for frontend work
+- **GitLens** — shows me git blame inline, incredibly useful when revisiting old code
+- **PHP Intelephense** — essential for WordPress theme development
+
+## Browser: Firefox with DevTools
+
+I test in Chrome too, but Firefox DevTools is genuinely better for CSS debugging. The grid and flexbox inspector alone saves me significant time when building responsive layouts.
+
+I keep DevTools open almost constantly while building. The Console, Network, and Inspector tabs are the three I use most.
+
+## Version Control: Git + GitHub
+
+Every project I work on — no matter how small — goes into a Git repository. This habit took time to build but it's been one of the most valuable things I've done as a developer.
+
+My basic workflow:
+- Make a change
+- Test it
+- Commit with a descriptive message
+- Push to GitHub
+
+Having a clear commit history has saved me multiple times when something broke and I needed to see what changed.
+
+## Local WordPress Development: LocalWP
+
+For WordPress projects, LocalWP is the fastest way to spin up a local environment. It handles the server, database, and PHP configuration automatically — no manual XAMPP setup required.
+
+I can create a new local WordPress install in about 60 seconds. That speed matters when you're prototyping or testing something quickly.
+
+## Design Reference: My Own Eye
+
+I don't use heavy design tools for most of my work. I keep a collection of websites I admire — noting specific things I like about their layout, typography, or color use.
+
+When building something new, I start with a clear idea of the aesthetic I'm going for before writing a single line of CSS. The code is faster to write when the vision is already clear.
+
+## Notes & Documentation: Plain Text Files
+
+I keep a running notes file for each project — things I tried, things that didn't work, references I found useful. Plain text, no special app needed.
+
+Simple systems are the ones you'll actually use.
+
+## The Key Principle
+
+The best workflow is the one you actually stick to. Don't collect tools — master a small set of them deeply. That's where the real efficiency comes from.

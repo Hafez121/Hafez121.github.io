@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab — Hafez Fandy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"></noscript>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #161616;
+    --bg3: #1c1c1c;
+    --border: rgba(255,255,255,0.12);
+    --accent: #ffffff;
+    --accent2: #cfcfcf;
+    --text: #f5f5f3;
+    --muted: #8a8a8a;
+    --card: #131313;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    max-width: calc(100% - 2rem);
+    padding: 0.9rem 2.2rem;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    position: relative;
+    display: inline-block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+    padding-bottom: 4px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%; height: 1px;
+    background: var(--text);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active::after { transform: scaleX(1); }
+
+  /* PAGE HEADER */
+  .lab-header {
+    padding: 9rem 4rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .lab-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .lab-desc {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* PROJECTS GRID */
+  .lab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem 6rem;
+  }
+
+  /* PROJECT CARD */
+  .lab-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lab-card:hover {
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-4px);
+  }
+
+  /* PROJECT IMAGE */
+  .lab-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* IMAGE PLACEHOLDER (when no image yet) */
+  .lab-card-img-placeholder {
+    width: 100%;
+    height: 220px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .lab-card-body {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  /* SKILLS / TAGS */
+  .lab-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .lab-card-tag {
+    padding: 0.25rem 0.65rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+  }
+
+  /* TITLE */
+  .lab-card-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  /* DESCRIPTION */
+  .lab-card-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  /* LIVE LINK BUTTON */
+  .lab-card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    width: fit-content;
+  }
+
+  .lab-card-btn:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .lab-card-btn svg {
+    transition: transform 0.2s;
+  }
+
+  .lab-card-btn:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  /* EMPTY STATE */
+  .lab-empty {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 4rem 8rem;
+    text-align: center;
+  }
+
+  .lab-empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    opacity: 0.8;
+  }
+
+  .lab-empty-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em;
+  }
+
+  .lab-empty-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  @media (max-width: 480px) {
+    .lab-empty { padding: 1.5rem 1rem 5rem; }
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .footer-resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.9rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.82rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .footer-resume:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+  .footer-resume svg { width: 14px; height: 14px; }
+
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(37,211,102,0.35);
+    z-index: 90;
+    opacity: 0;
+    transform: translateY(24px) scale(0.85);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease, background 0.2s;
+  }
+  .whatsapp-float.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  .whatsapp-float:hover { background: #20BD5A; transform: translateY(-3px) scale(1.05); }
+  .whatsapp-float svg { width: 28px; height: 28px; fill: #fff; }
+  @media (max-width: 768px) {
+    .whatsapp-float { bottom: 1.2rem; right: 1.2rem; width: 50px; height: 50px; }
+    .whatsapp-float svg { width: 25px; height: 25px; }
+  }
+
+  /* RESPONSIVE TABLET */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.82rem; }
+    .lab-header { padding: 7rem 1.5rem 3rem; }
+    .lab-grid { padding: 0 1.5rem 4rem; grid-template-columns: 1fr; }
+  }
+
+  /* RESPONSIVE MOBILE */
+  @media (max-width: 480px) {
+    nav { padding: 0.9rem 1rem; }
+    .nav-links { display: none; }
+    .lab-header { padding: 6rem 1rem 2.5rem; }
+    .lab-grid { padding: 0 1rem 3rem; grid-template-columns: 1fr; gap: 1.2rem; }
+    footer { padding: 1.5rem 1rem; }
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 300;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.8rem;
+  }
+  .nav-overlay.open { display: flex; }
+  .nav-overlay a {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-overlay a:hover,
+  .nav-overlay a.active { color: var(--accent); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="lab.html" class="active">Lab</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-overlay" id="navOverlay">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="index.html#about" onclick="closeMenu()">About</a>
+  <a href="index.html#skills" onclick="closeMenu()">Skills</a>
+  <a href="index.html#projects" onclick="closeMenu()">Projects</a>
+  <a href="lab.html" class="active">Lab</a>
+  <a href="blog.html">Blog</a>
+  <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="lab-header">
+  <div class="section-tag">Experiments & Mini Projects</div>
+  <h1 class="lab-title">The Lab</h1>
+  <p class="lab-desc">A collection of small but meaningful builds — each one focused on a specific idea, technique, or problem worth solving.</p>
+</div>
+
+<!-- 
+<div class="lab-empty">
+  <div class="lab-empty-icon">🛠️</div>
+  <div class="lab-empty-title">Nothing to show yet</div>
+  <p class="lab-empty-desc">I'm currently building out mini projects for this page — API tools, WordPress utilities, and more. Check back soon.</p>
+</div>
+-->
+
+<div class="lab-grid">
+
+
+  <div class="lab-card">
+    <img class="lab-card-img" src="images/repo-explorer-preview.png" alt="Repo Explorer screenshot">
+    <div class="lab-card-body">
+      <div class="lab-card-tags">
+        <span class="lab-card-tag">JavaScript</span>
+        <span class="lab-card-tag">REST API</span>
+        <span class="lab-card-tag">Async/Fetch</span>
+      </div>
+      <div class="lab-card-title">Repo Explorer</div>
+      <p class="lab-card-desc">A live GitHub REST API tool — enter any username to fetch and browse their public repos in real time, sortable by stars, name, or last updated. No backend, no build step.</p>
+      <a href="https://hafez121.github.io/lab/repo-explorer.html " class="lab-card-btn" target="_blank">
+        Live Project
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M7 17L17 7M17 7H7M17 7v10"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="lab-card">
+    <img class="lab-card-img" src="images/css-grid-showcase.png" alt="css grid showcase screenshot">
+    <div class="lab-card-body">
+      <div class="lab-card-tags">
+        <span class="lab-card-tag">CSS Grid</span>
+        <span class="lab-card-tag">Flexbox</span>
+        <span class="lab-card-tag">Tailwind CSS</span>
+        <span class="lab-card-tag">Responsive Design</span>
+      </div>
+      <div class="lab-card-title">Responsive Layout Showcase</div>
+      <p class="lab-card-desc">Three UI patterns — an auto-reflowing grid, pricing cards, and a responsive nav bar — each built two ways: hand-written CSS Grid/Flexbox side by side with Tailwind utility classes. A live breakpoint indicator shows the layout responding in real time as the window resizes.</p>
+      <a href="https://hafez121.github.io/lab/css-grid-showcase/index.html" class="lab-card-btn" target="_blank">
+        Live Project
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M7 17L17 7M17 7H7M17 7v10"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+<div class="lab-card">
+    <img class="lab-card-img" src="images/Sprint-Task-Board.png" alt="sprint task board screenshot">
+    <div class="lab-card-body">
+      <div class="lab-card-tags">
+        <span class="lab-card-tag">React</span>
+        <span class="lab-card-tag">JavaScript (ES6+)</span>
+        <span class="lab-card-tag">Vite</span>
+        <span class="lab-card-tag">Hooks</span>
+      </div>
+      <div class="lab-card-title">Sprint Task Board</div>
+      <p class="lab-card-desc">Three UI patterns — an auto-reflowing grid, pricing cards, and a responsive nav bar — each built two ways: hand-written CSS Grid/Flexbox side by side with Tailwind utility classes. A live breakpoint indicator shows the layout responding in real time as the window resizes.</p>
+      <a href="https://hafez121.github.io/lab/react-sprint-board/index.html" class="lab-card-btn" target="_blank">
+        Live Project
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M7 17L17 7M17 7H7M17 7v10"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Hafez Fandy — WordPress & Front-End Developer</p>
+  <a class="footer-resume" href="files/Hafez-Fandy-Resume.pdf" target="_blank" rel="noopener" download>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+    Download Resume (PDF)
+  </a>
+</footer>
+
+<a id="whatsappFloat" class="whatsapp-float" href="https://wa.me/96181520553" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.27-.1-.46-.15-.66.15-.2.3-.76.95-.93 1.15-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.5.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.91-2.2-.24-.57-.48-.5-.66-.5-.17-.01-.37-.01-.56-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.2-.56-.35z"/><path d="M12.04 2C6.58 2 2.13 6.42 2.13 11.88c0 1.87.52 3.62 1.4 5.12L2 22l5.14-1.5a9.9 9.9 0 0 0 4.9 1.3h.01c5.46 0 9.9-4.42 9.9-9.88C21.95 6.42 17.5 2 12.04 2zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.1.9.83-3.03-.2-.31a8.14 8.14 0 0 1-1.25-4.37c0-4.5 3.68-8.17 8.22-8.17 2.2 0 4.26.86 5.82 2.4a8.13 8.13 0 0 1 2.4 5.78c0 4.5-3.68 8.13-8.22 8.13z"/></svg>
+</a>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('navOverlay').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('navOverlay').classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('navOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
+<script>
+  (function() {
+    var waBtn = document.getElementById('whatsappFloat');
+    var revealAt = window.innerHeight * 0.6;
+    var ticking = false;
+    function toggleButton() {
+      if (window.scrollY > revealAt) { waBtn.classList.add('visible'); }
+      else { waBtn.classList.remove('visible'); }
+      ticking = false;
+    }
+    window.addEventListener('scroll', function() {
+      if (!ticking) { requestAnimationFrame(toggleButton); ticking = true; }
+    });
+    toggleButton();
+  })();
+</script>
+</body>
+</html>

@@ -1,15 +1,14 @@
 ---
-title: "Git for Beginners: How I Finally Understood Version Control"
-description: "Git confused me for a long time. Then one day it clicked. Here's the explanation I wish I had when I was starting out. No jargon, just what Git actually does and why it matters."
-date: 2026-06-26
-category: "Tools & Resources"
-group: developer
-image: /images/Git.png
+title: Git for Beginners — How I Finally Understood Version Control
+date: June 26, 2026
+category: Tools & Resources
+description: Git confused me for a long time. Then one day it clicked. Here's the explanation I wish I had when I was starting out — no jargon, just what Git actually does and why it matters.
+image: 
 ---
 
 ## The Moment Git Made Sense
 
-For a long time, Git felt like a complicated ritual I had to perform before my code was "safe." Push, pull, commit, merge. I did the steps without really understanding what was happening.
+For a long time, Git felt like a complicated ritual I had to perform before my code was "safe." Push, pull, commit, merge — I did the steps without really understanding what was happening.
 
 Then I broke something badly enough that I needed to go back. And Git saved me. That's when I actually understood what it was for.
 
@@ -17,17 +16,17 @@ Then I broke something badly enough that I needed to go back. And Git saved me. 
 
 Git is a system that takes snapshots of your code at points in time. Each snapshot is called a commit. You can go back to any commit, see exactly what changed between any two commits, and work on multiple versions of your code at the same time.
 
-That's it. Everything else (branches, merges, remotes) is built on top of that simple idea.
+That's it. Everything else — branches, merges, remotes — is built on top of that simple idea.
 
 ## The Three Commands I Use 90% of the Time
 
 When I'm working on a project, most of my Git usage comes down to three commands:
 
-**git add .**: tells Git which files to include in the next snapshot
+**git add .** — tells Git which files to include in the next snapshot
 
-**git commit -m "your message here"**: takes the snapshot and labels it
+**git commit -m "your message here"** — takes the snapshot and labels it
 
-**git push**: sends your snapshots to GitHub so they're backed up and shareable
+**git push** — sends your snapshots to GitHub so they're backed up and shareable
 
 That's the core loop. Everything else is for more complex situations.
 
@@ -37,7 +36,7 @@ A branch is just a separate line of development. The main branch is where your w
 
 When I want to try something new without risking breaking my working code, I create a new branch, make the changes there, and only merge it back into main when I'm happy with it.
 
-I'll be honest: when I was starting out I worked entirely on the main branch. That works fine for solo projects. But the habit of using branches becomes important when projects get bigger or when you're working with others.
+I'll be honest — when I was starting out I worked entirely on the main branch. That works fine for solo projects. But the habit of using branches becomes important when projects get bigger or when you're working with others.
 
 ## The Mistake I Made Early On
 
@@ -53,7 +52,7 @@ This confused me for a while. Git is the version control system that runs on you
 
 You can use Git without GitHub. GitHub just makes it easy to back up your code, share it, and collaborate with others.
 
-For a developer building a portfolio, GitHub is essential. It's where hiring managers go to look at your actual code.
+For a developer building a portfolio, GitHub is essential — it's where hiring managers go to look at your actual code.
 
 ## The Command That Has Saved Me Multiple Times
 
@@ -67,4 +66,4 @@ This shows you a clean list of all your commits. When something breaks and you n
 
 If you're not using Git yet, start today. Even on small personal projects. The habit is more important than the complexity of what you're building.
 
-Every professional developer uses version control. Getting comfortable with Git now, before you're in a job, is one of the most practical things you can do to prepare for real work.
+Every professional developer uses version control. Getting comfortable with Git now — before you're in a job — is one of the most practical things you can do to prepare for real work.

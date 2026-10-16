@@ -1,6 +1,0 @@
-{
-  "layout": "layouts/case-study.njk",
-  "permalink": "/work/{{ page.fileSlug }}/",
-  "concept": true,
-  "type": "Concept build"
-}
