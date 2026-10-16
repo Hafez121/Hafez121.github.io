@@ -1,9 +1,10 @@
 ---
-title: Why Every Developer Should Learn the Browser DevTools Properly
-date: June 26, 2026
-category: Tools & Resources
-description: Most developers use DevTools to check console errors and call it a day. But DevTools is one of the most powerful tools in your entire workflow — if you actually learn it.
-image: 
+title: "Why Every Developer Should Learn the Browser DevTools Properly"
+description: "Most developers use DevTools to check console errors and call it a day. But DevTools is one of the most powerful tools in your entire workflow, if you actually learn it."
+date: 2026-06-26
+category: "Tools & Resources"
+group: developer
+image: /images/Devtools.png
 ---
 
 ## The Tool You're Already Using Wrong
@@ -12,7 +13,7 @@ Every web developer has DevTools open. But most are using maybe 20% of what it c
 
 I was the same way for a long time. F12 to open it, check if there are red errors in the console, close it. That's it.
 
-Then I started learning what was actually in there — and it genuinely changed how fast I can debug and build things.
+Then I started learning what was actually in there, and it changed how fast I can debug and build things.
 
 ## The Inspector: More Than Just Viewing HTML
 
@@ -20,7 +21,7 @@ Most developers know you can inspect elements and see the HTML structure. What f
 
 When I'm building a layout, I do almost all my initial CSS experimentation directly in DevTools. I change values, see the result instantly, then copy what works into my actual code. This is dramatically faster than switching between editor and browser constantly.
 
-The computed styles panel is also underused. When a CSS rule isn't doing what you expect, the computed panel shows you exactly what value is actually being applied and where it came from — including which rule is overriding which.
+The computed styles panel is also underused. When a CSS rule isn't doing what you expect, the computed panel shows you exactly what value is actually being applied and where it came from, including which rule is overriding which.
 
 ## The Console: Not Just for Error Messages
 
@@ -34,17 +35,17 @@ I use the console to test fetch requests before wiring them up properly. Somethi
 fetch('posts/posts.json').then(r=>r.json()).then(d=>console.log(d))
 ```
 
-This tells me immediately whether the file exists, what the response looks like, and whether my JSON is valid — before I've written a single line of application code.
+This tells me immediately whether the file exists, what the response looks like, and whether my JSON is valid, before I've written a single line of application code.
 
 ## The Network Tab: Understanding What's Actually Loading
 
-The Network tab shows you every request your page makes — HTML, CSS, JavaScript, images, API calls, everything.
+The Network tab shows you every request your page makes: HTML, CSS, JavaScript, images, API calls, everything.
 
 This is essential for two things: debugging fetch requests that aren't working, and understanding your page's performance.
 
 When an API call fails, the Network tab tells you the status code, the exact URL that was requested, the response headers, and the response body. This is almost always enough information to fix the problem without guessing.
 
-For performance, the Network tab shows you what's loading slowly. Large images, blocking scripts, too many requests — all visible at a glance.
+For performance, the Network tab shows you what's loading slowly. Large images, blocking scripts, too many requests. All visible at a glance.
 
 ## The Device Toolbar: Real Responsive Testing
 
@@ -56,9 +57,9 @@ But beyond just resizing the viewport, it also simulates touch events and lets y
 
 Two tabs most developers rarely open:
 
-The **Performance** tab records exactly what your browser is doing over time — rendering, scripting, painting. When something feels slow, this is where you find out why.
+The **Performance** tab records exactly what your browser is doing over time: rendering, scripting, painting. When something feels slow, this is where you find out why.
 
-The **Accessibility** tab shows you the accessibility tree of your page — how screen readers interpret your content. For any developer who cares about building sites that work for everyone, this is worth understanding.
+The **Accessibility** tab shows you the accessibility tree of your page, meaning how screen readers interpret your content. For any developer who cares about building sites that work for everyone, this is worth understanding.
 
 ## Start With One Tab
 

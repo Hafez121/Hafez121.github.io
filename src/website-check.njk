@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+title: Free website check
+description: Send your website or Google Maps link and get a free, honest check of speed, mobile, search and contact paths.
+permalink: /website-check/
+---
+{% set msg = "Hi Hafez, I'd like a free website check.\n\nBusiness name:\nWebsite or Google Maps link:\nWhat I want to improve:" %}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Free website check</p>
+    <h1 class="h-xl" style="max-width:16ch">Find out what's holding your site back.</h1>
+    <p class="lead">Send me your website or Google Maps link. I'll check it and send you a short, plain-language list of what to fix first. Free, and you don't have to hire me afterwards.</p>
+  </div>
+</section>
+
+<section aria-label="What the check covers">
+  <div class="container check-grid">
+    <div class="reveal">
+      <h2 class="h-md" style="margin-bottom:1.5rem">What I check</h2>
+      <ol class="check-list">
+        <li><div><strong>Speed</strong><span>How fast your pages load on a phone, and what is slowing them down.</span></div></li>
+        <li><div><strong>Mobile</strong><span>Whether your site is easy to read and use on a small screen.</span></div></li>
+        <li><div><strong>Search</strong><span>Titles, structure and the basics Google needs to understand your pages.</span></div></li>
+        <li><div><strong>Google Business Profile</strong><span>Whether your listing is complete, accurate and convincing.</span></div></li>
+        <li><div><strong>Contact</strong><span>How easy it is for a customer to call, message or find you.</span></div></li>
+      </ol>
+    </div>
+
+    <div class="form-card reveal">
+      {% if site.tally.websiteCheck %}
+      <iframe src="https://tally.so/embed/{{ site.tally.websiteCheck }}?alignLeft=1&hideTitle=1&transparentBackground=1" title="Free website check form" loading="lazy"></iframe>
+      {% else %}
+      <h2>Request your check</h2>
+      <p>Send your business name and your website or Google Maps link. A message with those two things is enough to get started.</p>
+      <div class="btn-row">
+        <a class="btn" href="https://wa.me/{{ site.whatsapp }}?text={{ msg | urlencode }}">Send on WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:{{ site.email }}?subject={{ 'Free website check' | urlencode }}&body={{ msg | urlencode }}">Send by email</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

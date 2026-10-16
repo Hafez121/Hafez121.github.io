@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ redirectTo | absoluteUrl(site.url) }}">
+  <meta http-equiv="refresh" content="0; url={{ redirectTo }}">
+  {{ extraScript | safe }}
+</head>
+<body>
+  <p>This page has moved to <a href="{{ redirectTo }}">{{ redirectTo }}</a>.</p>
+</body>
+</html>

@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+title: About
+description: Hafez Fandy is a web developer building fast, well-made websites, WordPress builds and automations for businesses and agencies.
+permalink: /about/
+---
+{% set skills = [
+  { group: "WordPress and CMS", items: ["WordPress", "WooCommerce", "Custom themes", "Child themes", "ACF", "WP_Query", "Hooks and filters", "REST API", "Elementor", "WP-CLI"] },
+  { group: "Front-end", items: ["HTML5", "CSS3", "JavaScript", "React", "Responsive design", "BEM", "CSS custom properties", "Tailwind", "Bootstrap", "SASS"] },
+  { group: "Back-end and languages", items: ["PHP", "C++", "Python"] },
+  { group: "Tools", items: ["Git", "GitHub", "Linux", "Bash", "Neovim", "VS Code", "Figma", "cPanel"] }
+] %}
+<section class="page-hero">
+  <div class="container about-grid">
+    <div class="about-photo reveal">
+      <img src="{{ site.photo }}" alt="Hafez Fandy" width="720" height="900">
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">About</p>
+      <h1 class="h-xl">Hi, I'm Hafez.</h1>
+      <div class="prose" style="margin-top:1.75rem">
+        <p>I'm a web developer. I build websites, WordPress themes, online stores and small automations, and I write the code myself, from scratch, instead of stacking templates and page builders on top of each other.</p>
+        <p>I care about the parts of a website that don't show up in a screenshot: how fast it loads on a cheap phone, whether it works with a keyboard, whether the next developer can understand the code, and whether it still works a year after launch.</p>
+        <p>Arabic is my native language and I work just as comfortably in English, so I build bilingual sites with a proper right-to-left layout, not a translated afterthought.</p>
+        <p>I work with businesses of every kind, and with agencies that need a reliable developer.</p>
+      </div>
+      <div class="btn-row" style="margin-top:2rem">
+        <a class="btn" href="/website-check/">Get a free website check</a>
+        <a class="btn btn-ghost" href="{{ site.resume }}">Download resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-border" aria-labelledby="values-title">
+  <div class="container">
+    <p class="eyebrow">How I work</p>
+    <h2 class="h-lg" id="values-title" style="max-width:20ch">Built on two things: speed and quality.</h2>
+    <div class="values">
+      <div class="value reveal">
+        <h3>Fast by default</h3>
+        <p>Light pages, optimised images, self-hosted fonts and no code the site doesn't need.</p>
+      </div>
+      <div class="value reveal">
+        <h3>Quick to answer</h3>
+        <p>Clear communication from the first message, and straight answers when something needs fixing.</p>
+      </div>
+      <div class="value reveal">
+        <h3>Done properly</h3>
+        <p>Clean, accessible, secure code, tested across screens and browsers before it goes live.</p>
+      </div>
+      <div class="value reveal">
+        <h3>Yours to keep</h3>
+        <p>You own the code, the domain and the hosting. Handover notes come with every project.</p>
+      </div>
+    </div>
+
+    <details class="skills">
+      <summary>Skills and tools</summary>
+      <div class="skills-body">
+        {% for g in skills %}
+        <div class="skills-group">
+          <h3>{{ g.group }}</h3>
+          <ul class="chips">{% for i in g.items %}<li>{{ i }}</li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+      </div>
+    </details>
+  </div>
+</section>

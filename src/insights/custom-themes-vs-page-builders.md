@@ -1,16 +1,17 @@
 ---
-title: Custom WordPress Themes vs Page Builders — My Honest Take
-date: June 26, 2026
-category: WordPress & Freelancing
-description: After building sites both ways, I have a clear opinion on when to use a custom theme and when a page builder is the right call. Here's my honest breakdown.
-image: 
+title: "Custom WordPress Themes vs Page Builders: My Honest Take"
+description: "After building sites both ways, I have a clear opinion on when to use a custom theme and when a page builder is the right call. Here's my honest breakdown."
+date: 2026-06-26
+category: "WordPress & Freelancing"
+group: developer
+image: /images/Custom-vs-page-builder.png
 ---
 
 ## The Question Every WordPress Developer Faces
 
 When you start a new WordPress project, one of the first decisions you make is how you're going to build it. Custom theme from scratch, or a page builder like Elementor?
 
-I've built projects both ways. And I've learned that the real answer isn't about which one is better — it's about which one is right for the specific project in front of you.
+I've built projects both ways. And I've learned that the real answer isn't about which one is better. It's about which one is right for the specific project in front of you.
 
 ## What Page Builders Are Actually Good At
 
@@ -44,13 +45,13 @@ The trade-off is time. A custom theme takes longer to build than dragging and dr
 
 Here's how I think about it for any new project:
 
-If the site needs complex custom functionality, unique interactions, or high performance standards — custom theme.
+If the site needs complex custom functionality, unique interactions, or high performance standards: custom theme.
 
-If the client needs to manage and update content themselves with minimal technical knowledge — page builder or a hybrid approach with a well-configured block theme.
+If the client needs to manage and update content themselves with minimal technical knowledge: page builder or a hybrid approach with a well-configured block theme.
 
-If budget and timeline are severely constrained — page builder gets the job done.
+If budget and timeline are severely constrained: page builder gets the job done.
 
-If it's a portfolio piece or something where code quality matters — custom theme every time.
+If it's a portfolio piece or something where code quality matters: custom theme every time.
 
 ## The Skill That Matters Most
 
@@ -58,4 +59,4 @@ Here's what I've realized: the developers who are most valuable aren't the ones 
 
 Knowing when not to build a custom theme is as important as knowing how to build one.
 
-That judgment — that's the real skill.
+That judgment is the real skill.

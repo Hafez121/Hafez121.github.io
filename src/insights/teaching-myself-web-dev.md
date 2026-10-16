@@ -1,9 +1,10 @@
 ---
-title: How I'm Teaching Myself Web Development While Building Real Projects
-date: June 26, 2026
-category: Career & Learning
-description: Learning web development without a CS degree is hard. Here's the honest approach I took — skipping the theory rabbit holes and building real things from day one.
-image: 
+title: "How I'm Teaching Myself Web Development While Building Real Projects"
+description: "Learning web development without a CS degree is hard. Here's the honest approach I took: skipping the theory rabbit holes and building real things from day one."
+date: 2026-06-26
+category: "Career & Learning"
+group: developer
+image: /images/Learning.jpg
 ---
 
 ## The Problem With Most Learning Advice
@@ -12,7 +13,7 @@ Every article about learning web development tells you the same thing: start wit
 
 I did all of that. And for a long time, I felt like I was learning without actually knowing anything.
 
-The turning point was when I stopped consuming and started building. Not toy projects. Not tutorial follow-alongs. Real things — websites with real problems to solve.
+The turning point was when I stopped consuming and started building. Not toy projects. Not tutorial follow-alongs. Real things: websites with real problems to solve.
 
 ## What My Learning Actually Looks Like
 
@@ -24,7 +25,7 @@ This is slower than binge-watching tutorials. But the knowledge stays.
 
 ## Building Projects Before You Feel Ready
 
-My portfolio site — the one you're reading this on — was built while I was still learning. The blog system you're reading this through uses the Fetch API and a custom markdown renderer I wrote myself. Three years ago I wouldn't have known where to start.
+My portfolio site, the one you're reading this on, was built while I was still learning. The first version of its blog loaded posts with the Fetch API and a small Markdown renderer I wrote myself. Three years ago I wouldn't have known where to start.
 
 The secret is that I built it anyway. I got stuck constantly. I debugged for hours. I read documentation I barely understood. But every one of those struggles taught me something a tutorial never could.
 

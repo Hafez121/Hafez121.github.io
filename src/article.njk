@@ -1,0 +1,7 @@
+---
+permalink: /article.html
+layout: layouts/redirect.njk
+redirectTo: /insights/
+eleventyExcludeFromCollections: true
+extraScript: '<script>var s=new URLSearchParams(location.search).get("slug");if(s&&/^[a-z0-9-]+$/.test(s)){location.replace("/insights/"+s+"/")}</script>'
+---

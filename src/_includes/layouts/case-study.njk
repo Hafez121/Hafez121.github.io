@@ -1,0 +1,90 @@
+---
+layout: layouts/base.njk
+ogType: article
+---
+<article>
+  <header class="page-hero">
+    <div class="container">
+      <a class="text-link" href="/work/"><span aria-hidden="true">&larr;</span> All work</a>
+      <p class="eyebrow" style="margin-top:2.5rem">{{ type }}</p>
+      <h1 class="h-xl" style="max-width:20ch">{{ title }}</h1>
+      <p class="lead">{{ summary }}</p>
+
+      <dl class="case-facts">
+        <div>
+          <dt>Client</dt>
+          <dd>{{ client }}</dd>
+        </div>
+        {% if services_used and services_used.length %}
+        <div>
+          <dt>Services</dt>
+          <dd>
+            {% for slug in services_used %}
+              {% for s in services %}{% if s.slug == slug %}<a href="/services/#{{ s.slug }}">{{ s.title }}</a>{% endif %}{% endfor %}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+          </dd>
+        </div>
+        {% endif %}
+        <div>
+          <dt>Stack</dt>
+          <dd>{{ stack | join(", ") }}</dd>
+        </div>
+      </dl>
+
+      {% if live or code %}
+      <div class="btn-row" style="margin-top:2rem">
+        {% if live %}<a class="btn" href="{{ live }}" rel="noopener">View live site <span aria-hidden="true">&nearr;</span></a>{% endif %}
+        {% if code %}<a class="btn btn-ghost" href="{{ code }}" rel="noopener">View code <span aria-hidden="true">&nearr;</span></a>{% endif %}
+      </div>
+      {% endif %}
+
+      {% if cover %}
+      <div class="case-cover reveal">
+        <img src="{{ cover }}" alt="{{ coverAlt or title }}" width="1600" height="1000" fetchpriority="high">
+      </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="container narrow">
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    {% if concept %}
+    <p class="notice">
+      <span aria-hidden="true">&#9675;</span>
+      <span>This is a concept build for a fictional brand. It shows how I work, not results for a real client.</span>
+    </p>
+    {% endif %}
+  </div>
+
+  {% if gallery %}
+  <section class="section" aria-labelledby="gallery-title">
+    <div class="container">
+      <h2 class="h-md" id="gallery-title">Screens</h2>
+      <div class="gallery">
+        {% for shot in gallery %}
+        <figure class="reveal">
+          <img src="{{ shot.src }}" alt="{{ shot.caption }}" loading="lazy" width="1600" height="1000">
+          <figcaption>{{ shot.caption }}</figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2 class="h-lg">Need something like this?</h2>
+        <p>Tell me what you are working on. I will look at it and come back with an honest plan and a quote.</p>
+        <div class="btn-row">
+          <a class="btn" href="/website-check/">Get a free website check</a>
+          <a class="btn btn-ghost" href="https://wa.me/{{ site.whatsapp }}">Message me on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

@@ -1,0 +1,11 @@
+<a class="work-card reveal" href="{{ item.url }}" data-tags="{{ item.data.tags | join(' ') }}">
+  <div class="work-media">
+    <img src="{{ item.data.cover }}" alt="{{ item.data.coverAlt or item.data.title }}" loading="lazy" width="1600" height="1000">
+  </div>
+  <div class="work-meta">
+    <span class="tag tag-strong">{{ item.data.type }}</span>
+    {% for t in item.data.stack | limit(3) %}<span class="tag">{{ t }}</span>{% endfor %}
+  </div>
+  <h3>{{ item.data.title }}</h3>
+  <p>{{ item.data.summary }}</p>
+</a>

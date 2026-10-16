@@ -1,0 +1,39 @@
+---
+layout: layouts/base.njk
+title: Lab
+description: Small experiments and tools by Hafez Fandy, each focused on one idea or technique.
+permalink: /lab/
+---
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Lab</p>
+    <h1 class="h-xl" style="max-width:16ch">Small builds, one idea each.</h1>
+    <p class="lead">Experiments and tools where I try a technique properly before using it on client work.</p>
+  </div>
+</section>
+
+<section aria-label="Lab projects">
+  <div class="container lab-grid">
+    <a class="lab-card reveal" href="/lab/repo-explorer.html">
+      <img src="/images/repo-explorer-preview.png" alt="Repo Explorer interface" loading="lazy" width="800" height="500">
+      <div>
+        <h3>Repo Explorer</h3>
+        <p>A live GitHub REST API tool. Enter a username to browse their public repositories, sortable by stars, name or last update. No backend, no build step.</p>
+      </div>
+    </a>
+    <a class="lab-card reveal" href="/lab/css-grid-showcase/">
+      <img src="/images/css-grid-showcase.png" alt="CSS Grid showcase" loading="lazy" width="800" height="500">
+      <div>
+        <h3>CSS Grid vs Tailwind</h3>
+        <p>Three UI patterns, an auto-reflowing grid, pricing cards and a responsive nav bar, each built twice: hand-written CSS Grid and Flexbox next to Tailwind utility classes.</p>
+      </div>
+    </a>
+    <a class="lab-card reveal" href="/lab/react-sprint-board/">
+      <img src="/images/Sprint-Task-Board.png" alt="Sprint Task Board" loading="lazy" width="800" height="500">
+      <div>
+        <h3>Sprint Task Board</h3>
+        <p>A drag-and-drop kanban board in React and Vite, with state saved in the browser through a custom hook.</p>
+      </div>
+    </a>
+  </div>
+</section>

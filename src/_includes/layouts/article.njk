@@ -1,0 +1,53 @@
+---
+layout: layouts/base.njk
+---
+<article>
+  <header class="article-head">
+    <div class="container narrow">
+      <a class="text-link" href="/insights/"><span aria-hidden="true">&larr;</span> All insights</a>
+      <p class="eyebrow" style="margin-top:2.5rem">{{ category }}</p>
+      <h1>{{ title }}</h1>
+      <div class="article-meta">
+        <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+        <span>{{ content | readingTime }} min read</span>
+        <span>By Hafez Fandy</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container narrow">
+    {% if image %}
+    <div class="article-cover">
+      <img src="{{ image }}" alt="" width="1600" height="900" fetchpriority="high">
+    </div>
+    {% endif %}
+
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    {% if sources %}
+    <aside class="sources" aria-label="Sources">
+      <strong>Sources</strong>
+      <ul>
+        {% for s in sources %}
+        <li><a href="{{ s.url }}" rel="noopener">{{ s.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </aside>
+    {% endif %}
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2 class="h-lg">Want this looked at on your own site?</h2>
+        <p>Send me your website or Google Maps link. I will check it and tell you plainly what is worth fixing first.</p>
+        <div class="btn-row">
+          <a class="btn" href="/website-check/">Get a free website check</a>
+          <a class="btn btn-ghost" href="/services/">See services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

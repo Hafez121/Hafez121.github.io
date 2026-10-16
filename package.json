@@ -1,0 +1,21 @@
+{
+  "name": "hafez121.github.io",
+  "version": "1.0.0",
+  "description": "Portfolio of Hafez Fandy",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hafez121/hafez121.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hafez121/hafez121.github.io/issues"
+  },
+  "homepage": "https://github.com/Hafez121/hafez121.github.io#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7"
+  },
+  "private": true
+}
